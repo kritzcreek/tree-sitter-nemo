@@ -1,0 +1,22 @@
+===
+divide_by_zero.txt
+===
+fn main() {
+    1 / 0;
+    {}
+}
+
+
+---
+
+(source_file
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (expr_decl
+        (binary_e
+          (int_lit)
+          (int_lit)))
+      (expr_decl
+        (block_e)))))

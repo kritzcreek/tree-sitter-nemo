@@ -1,0 +1,201 @@
+===
+expr_postfix.txt
+===
+import log : fn(i32) -> unit from log
+
+fn f0() {
+  log(42);
+}
+
+fn f1(x : i32) {
+  log(x);
+}
+
+fn f2(x : i32, y : i32) {
+  log(x);
+  log(y);
+}
+
+fn ff(x : i32) -> fn(i32) -> unit {
+  fn (y : i32) {
+    log(y)
+  }
+}
+
+struct S {
+  f0 : fn() -> unit,
+}
+
+fn main() {
+  f0();
+  f1(1);
+  f2(1, 2,);
+  f2(1, f1(2));
+  ff(1)(10);
+
+  let s = S { f0 = f0 };
+  s.f0();
+
+  let xs = [s];
+  xs[0].f0();
+}
+
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))))
+  (top_func
+    (lower_ident)
+    (func_params
+      (func_param
+        (lower_ident)
+        (ty_i32)))
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (var_e
+              (lower_ident)))))))
+  (top_func
+    (lower_ident)
+    (func_params
+      (func_param
+        (lower_ident)
+        (ty_i32))
+      (func_param
+        (lower_ident)
+        (ty_i32)))
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (var_e
+              (lower_ident)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (var_e
+              (lower_ident)))))))
+  (top_func
+    (lower_ident)
+    (func_params
+      (func_param
+        (lower_ident)
+        (ty_i32)))
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (block_e
+      (expr_decl
+        (function_e
+          (func_params
+            (func_param
+              (lower_ident)
+              (ty_i32)))
+          (block_e
+            (expr_decl
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (var_e
+                    (lower_ident))))))))))
+  (top_struct
+    (upper_ident)
+    (struct_field_top
+      (lower_ident)
+      (ty_func
+        (ty_unit))))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args)))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit)
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit)
+            (call_e
+              (var_e
+                (lower_ident))
+              (call_args
+                (int_lit))))))
+      (expr_decl
+        (call_e
+          (call_e
+            (var_e
+              (lower_ident))
+            (call_args
+              (int_lit)))
+          (call_args
+            (int_lit))))
+      (let_decl
+        (lower_ident)
+        (struct_e
+          (upper_ident)
+          (struct_field_e
+            (lower_ident)
+            (var_e
+              (lower_ident)))))
+      (expr_decl
+        (call_e
+          (struct_idx_e
+            (var_e
+              (lower_ident))
+            (lower_ident))
+          (call_args)))
+      (let_decl
+        (lower_ident)
+        (array_e
+          (var_e
+            (lower_ident))))
+      (expr_decl
+        (call_e
+          (struct_idx_e
+            (array_idx_e
+              (var_e
+                (lower_ident))
+              (int_lit))
+            (lower_ident))
+          (call_args))))))

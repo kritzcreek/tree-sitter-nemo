@@ -1,0 +1,122 @@
+===
+closures.txt
+===
+
+import log : fn (i32) -> unit from log
+
+fn main() {
+  let x = (fn (x : i32) -> i32 { x + 1 })(10);
+  log(x);
+
+  let twice = {
+   fn (f : fn (i32) -> i32) -> fn(i32) -> i32 {
+     fn (x : i32) -> i32 {
+       f(f(x))
+     }
+   }
+  };
+  let add1 = fn (x : i32) -> i32 { x + 1 };
+  log(twice(add1)(3))
+}
+
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (let_decl
+        (lower_ident)
+        (call_e
+          (parenthesized_e
+            (function_e
+              (func_params
+                (func_param
+                  (lower_ident)
+                  (ty_i32)))
+              (ty_i32)
+              (block_e
+                (expr_decl
+                  (binary_e
+                    (var_e
+                      (lower_ident))
+                    (int_lit))))))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (var_e
+              (lower_ident)))))
+      (let_decl
+        (lower_ident)
+        (block_e
+          (expr_decl
+            (function_e
+              (func_params
+                (func_param
+                  (lower_ident)
+                  (ty_func
+                    (ty_i32)
+                    (ty_i32))))
+              (ty_func
+                (ty_i32)
+                (ty_i32))
+              (block_e
+                (expr_decl
+                  (function_e
+                    (func_params
+                      (func_param
+                        (lower_ident)
+                        (ty_i32)))
+                    (ty_i32)
+                    (block_e
+                      (expr_decl
+                        (call_e
+                          (var_e
+                            (lower_ident))
+                          (call_args
+                            (call_e
+                              (var_e
+                                (lower_ident))
+                              (call_args
+                                (var_e
+                                  (lower_ident)))))))))))))))
+      (let_decl
+        (lower_ident)
+        (function_e
+          (func_params
+            (func_param
+              (lower_ident)
+              (ty_i32)))
+          (ty_i32)
+          (block_e
+            (expr_decl
+              (binary_e
+                (var_e
+                  (lower_ident))
+                (int_lit))))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (call_e
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (var_e
+                    (lower_ident))))
+              (call_args
+                (int_lit)))))))))

@@ -1,0 +1,269 @@
+===
+variants.txt
+===
+variant Enum {
+  struct A {},
+  struct B {},
+  struct C {},
+}
+
+variant Shape {
+  struct Circle { radius : f32 },
+  struct Rectangle { len : f32, width : f32 },
+}
+
+import print_char : fn (i32) -> unit from print_char
+import logf : fn (f32) -> unit from log
+
+fn print_enum(e : Enum) {
+  let c = match e {
+    Enum::A _ => { bytes_get("a", 0) },
+    Enum::B _ => { bytes_get("b", 0) },
+    Enum::C _ => { bytes_get("c", 0) },
+  };
+  print_char(c);
+  print_char(10);
+  {};
+}
+
+fn print_shape(s : Shape) {
+  match s {
+    Shape::Circle c => {
+      logf(c.radius);
+    },
+    Shape::Rectangle r => {
+      logf(r.len);
+      logf(r.width);
+    },
+  };
+}
+
+fn main() {
+  print_enum(Enum::A {});
+  print_enum(Enum::B {});
+  print_enum(Enum::C {});
+
+  print_shape(Shape::Circle { radius = 2.0 });
+  print_shape(Shape::Rectangle { len = 3.0, width = 4.0 });
+}
+
+
+---
+
+(source_file
+  (top_variant
+    (upper_ident)
+    (top_struct
+      (upper_ident))
+    (top_struct
+      (upper_ident))
+    (top_struct
+      (upper_ident)))
+  (top_variant
+    (upper_ident)
+    (top_struct
+      (upper_ident)
+      (struct_field_top
+        (lower_ident)
+        (ty_f32)))
+    (top_struct
+      (upper_ident)
+      (struct_field_top
+        (lower_ident)
+        (ty_f32))
+      (struct_field_top
+        (lower_ident)
+        (ty_f32))))
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_f32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params
+      (func_param
+        (lower_ident)
+        (ty_cons
+          (upper_ident))))
+    (block_e
+      (let_decl
+        (lower_ident)
+        (match_e
+          (var_e
+            (lower_ident))
+          (match_branch
+            (variant_pat
+              (qualifier
+                (upper_ident))
+              (upper_ident)
+              (lower_ident))
+            (block_e
+              (expr_decl
+                (call_e
+                  (var_e
+                    (lower_ident))
+                  (call_args
+                    (bytes_lit)
+                    (int_lit))))))
+          (match_branch
+            (variant_pat
+              (qualifier
+                (upper_ident))
+              (upper_ident)
+              (lower_ident))
+            (block_e
+              (expr_decl
+                (call_e
+                  (var_e
+                    (lower_ident))
+                  (call_args
+                    (bytes_lit)
+                    (int_lit))))))
+          (match_branch
+            (variant_pat
+              (qualifier
+                (upper_ident))
+              (upper_ident)
+              (lower_ident))
+            (block_e
+              (expr_decl
+                (call_e
+                  (var_e
+                    (lower_ident))
+                  (call_args
+                    (bytes_lit)
+                    (int_lit))))))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (var_e
+              (lower_ident)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (block_e))))
+  (top_func
+    (lower_ident)
+    (func_params
+      (func_param
+        (lower_ident)
+        (ty_cons
+          (upper_ident))))
+    (block_e
+      (expr_decl
+        (match_e
+          (var_e
+            (lower_ident))
+          (match_branch
+            (variant_pat
+              (qualifier
+                (upper_ident))
+              (upper_ident)
+              (lower_ident))
+            (block_e
+              (expr_decl
+                (call_e
+                  (var_e
+                    (lower_ident))
+                  (call_args
+                    (struct_idx_e
+                      (var_e
+                        (lower_ident))
+                      (lower_ident)))))))
+          (match_branch
+            (variant_pat
+              (qualifier
+                (upper_ident))
+              (upper_ident)
+              (lower_ident))
+            (block_e
+              (expr_decl
+                (call_e
+                  (var_e
+                    (lower_ident))
+                  (call_args
+                    (struct_idx_e
+                      (var_e
+                        (lower_ident))
+                      (lower_ident)))))
+              (expr_decl
+                (call_e
+                  (var_e
+                    (lower_ident))
+                  (call_args
+                    (struct_idx_e
+                      (var_e
+                        (lower_ident))
+                      (lower_ident)))))))))))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (struct_e
+              (qualifier
+                (upper_ident))
+              (upper_ident)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (struct_e
+              (qualifier
+                (upper_ident))
+              (upper_ident)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (struct_e
+              (qualifier
+                (upper_ident))
+              (upper_ident)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (struct_e
+              (qualifier
+                (upper_ident))
+              (upper_ident)
+              (struct_field_e
+                (lower_ident)
+                (float_lit))))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (struct_e
+              (qualifier
+                (upper_ident))
+              (upper_ident)
+              (struct_field_e
+                (lower_ident)
+                (float_lit))
+              (struct_field_e
+                (lower_ident)
+                (float_lit)))))))))

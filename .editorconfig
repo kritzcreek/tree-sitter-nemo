@@ -1,0 +1,23 @@
+root = true
+
+[*]
+charset = utf-8
+
+[*.{json,toml}]
+indent_style = space
+indent_size = 2
+
+[*.js]
+indent_style = space
+indent_size = 2
+
+[*.rs]
+indent_style = space
+indent_size = 4
+
+[Makefile]
+indent_style = tab
+indent_size = 8
+
+[parser.c]
+indent_size = 2

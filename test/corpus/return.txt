@@ -1,0 +1,157 @@
+===
+return.txt
+===
+import log : fn (i32) -> unit from log
+import logf : fn (f32) -> unit from log
+
+fn main() -> i32 {
+  log(early_return());
+  logf(loop_return());
+  log(lambda_return());
+}
+
+fn early_return() -> i32 {
+  return 10;
+  20;
+}
+
+fn loop_return() -> f32 {
+  let i = 0.0;
+  while true {
+    if i > 10.0 {
+        return i;
+    } else {};
+    set i = i + 1.0;
+  };
+  0.0;
+}
+
+fn lambda_return() -> i32 {
+  let f = fn () -> bool {
+    return true;
+  };
+  if f() {
+    return 12;
+  } else {
+    return 20;
+  };
+}
+
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_f32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (ty_i32)
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (call_e
+              (var_e
+                (lower_ident))
+              (call_args)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (call_e
+              (var_e
+                (lower_ident))
+              (call_args)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (call_e
+              (var_e
+                (lower_ident))
+              (call_args)))))))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (ty_i32)
+    (block_e
+      (expr_decl
+        (return_e
+          (int_lit)))
+      (expr_decl
+        (int_lit))))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (ty_f32)
+    (block_e
+      (let_decl
+        (lower_ident)
+        (float_lit))
+      (while_decl
+        (bool_lit)
+        (block_e
+          (expr_decl
+            (if_e
+              (binary_e
+                (var_e
+                  (lower_ident))
+                (float_lit))
+              (block_e
+                (expr_decl
+                  (return_e
+                    (var_e
+                      (lower_ident)))))
+              (block_e)))
+          (set_decl
+            (set_var
+              (lower_ident))
+            (binary_e
+              (var_e
+                (lower_ident))
+              (float_lit)))))
+      (expr_decl
+        (float_lit))))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (ty_i32)
+    (block_e
+      (let_decl
+        (lower_ident)
+        (function_e
+          (func_params)
+          (ty_bool)
+          (block_e
+            (expr_decl
+              (return_e
+                (bool_lit))))))
+      (expr_decl
+        (if_e
+          (call_e
+            (var_e
+              (lower_ident))
+            (call_args))
+          (block_e
+            (expr_decl
+              (return_e
+                (int_lit))))
+          (block_e
+            (expr_decl
+              (return_e
+                (int_lit)))))))))

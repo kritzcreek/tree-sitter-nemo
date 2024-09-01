@@ -1,0 +1,68 @@
+===
+poly.txt
+===
+fn poly[a, b](a : a, other : b) {
+  poly#[i32, bool](1, true)
+}
+
+struct Box[a] {
+  content : a
+}
+
+fn main() -> Box[i32] {
+  Box #[i32] { content = 42 }
+}
+
+
+---
+
+(source_file
+  (top_func
+    (lower_ident)
+    (type_params
+      (lower_ident)
+      (lower_ident))
+    (func_params
+      (func_param
+        (lower_ident)
+        (ty_var
+          (lower_ident)))
+      (func_param
+        (lower_ident)
+        (ty_var
+          (lower_ident))))
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (type_args_hash
+            (ty_i32)
+            (ty_bool))
+          (call_args
+            (int_lit)
+            (bool_lit))))))
+  (top_struct
+    (upper_ident)
+    (type_params
+      (lower_ident))
+    (struct_field_top
+      (lower_ident)
+      (ty_var
+        (lower_ident))))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (ty_cons
+      (upper_ident)
+      (type_args
+        (ty_i32)))
+    (block_e
+      (expr_decl
+        (struct_e
+          (upper_ident)
+          (type_args_hash
+            (ty_i32))
+          (struct_field_e
+            (lower_ident)
+            (int_lit)))))))

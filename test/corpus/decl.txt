@@ -1,0 +1,169 @@
+===
+decl.txt
+===
+
+import log : fn (i32) -> unit from log
+
+struct Point {
+  x : i32,
+  xs : [i32],
+}
+
+fn main() {
+    let x = 1;
+    let y : i32 = 10;
+    set x = 1;
+    let xs = [1];
+    set xs[0] = 1;
+
+    let p = Point { x = 10, xs = [0, 1, 2] };
+    log(p.x);
+    set p.x = 1;
+    log(p.x);
+    set p.xs[0] = 1;
+    log(p.xs[0]);
+
+    let i = 0;
+    while i < array_len#[i32](p.xs) {
+      log(p.xs[i]);
+      set i = i + 1;
+    }
+}
+
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_struct
+    (upper_ident)
+    (struct_field_top
+      (lower_ident)
+      (ty_i32))
+    (struct_field_top
+      (lower_ident)
+      (ty_array
+        (ty_i32))))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (let_decl
+        (lower_ident)
+        (int_lit))
+      (let_decl
+        (lower_ident)
+        (ty_i32)
+        (int_lit))
+      (set_decl
+        (set_var
+          (lower_ident))
+        (int_lit))
+      (let_decl
+        (lower_ident)
+        (array_e
+          (int_lit)))
+      (set_decl
+        (set_array_idx
+          (set_var
+            (lower_ident))
+          (int_lit))
+        (int_lit))
+      (let_decl
+        (lower_ident)
+        (struct_e
+          (upper_ident)
+          (struct_field_e
+            (lower_ident)
+            (int_lit))
+          (struct_field_e
+            (lower_ident)
+            (array_e
+              (int_lit)
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (struct_idx_e
+              (var_e
+                (lower_ident))
+              (lower_ident)))))
+      (set_decl
+        (set_struct_idx
+          (set_var
+            (lower_ident))
+          (lower_ident))
+        (int_lit))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (struct_idx_e
+              (var_e
+                (lower_ident))
+              (lower_ident)))))
+      (set_decl
+        (set_array_idx
+          (set_struct_idx
+            (set_var
+              (lower_ident))
+            (lower_ident))
+          (int_lit))
+        (int_lit))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (array_idx_e
+              (struct_idx_e
+                (var_e
+                  (lower_ident))
+                (lower_ident))
+              (int_lit)))))
+      (let_decl
+        (lower_ident)
+        (int_lit))
+      (while_decl
+        (binary_e
+          (var_e
+            (lower_ident))
+          (call_e
+            (var_e
+              (lower_ident))
+            (type_args_hash
+              (ty_i32))
+            (call_args
+              (struct_idx_e
+                (var_e
+                  (lower_ident))
+                (lower_ident)))))
+        (block_e
+          (expr_decl
+            (call_e
+              (var_e
+                (lower_ident))
+              (call_args
+                (array_idx_e
+                  (struct_idx_e
+                    (var_e
+                      (lower_ident))
+                    (lower_ident))
+                  (var_e
+                    (lower_ident))))))
+          (set_decl
+            (set_var
+              (lower_ident))
+            (binary_e
+              (var_e
+                (lower_ident))
+              (int_lit))))))))

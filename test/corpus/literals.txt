@@ -1,0 +1,106 @@
+===
+literals.txt
+===
+import log : fn (i32) -> unit from log
+import logb : fn (bool) -> unit from log
+import logf : fn (f32) -> unit from log
+
+fn main() {
+  log(0);
+  log(4242);
+  log(0b01010101);
+  log(0xDeAdBeE);
+  log(0x1aAbB2cC);
+  logb(true);
+  logb(false);
+  logf(0.0);
+  logf(0.1234);
+  logf(1234.1234);
+}
+
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_bool)
+      (ty_unit))
+    (lower_ident))
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_f32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (bool_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (bool_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (float_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (float_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (float_lit)))))))

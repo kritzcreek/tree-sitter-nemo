@@ -1,0 +1,58 @@
+===
+if.txt
+===
+import log : fn (i32) -> unit from log
+
+fn main() {
+  if true { log(1) } else { log(2) };
+  if false { log(1) } else { log(2) };
+}
+
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (expr_decl
+        (if_e
+          (bool_lit)
+          (block_e
+            (expr_decl
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (int_lit)))))
+          (block_e
+            (expr_decl
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (int_lit)))))))
+      (expr_decl
+        (if_e
+          (bool_lit)
+          (block_e
+            (expr_decl
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (int_lit)))))
+          (block_e
+            (expr_decl
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (int_lit))))))))))

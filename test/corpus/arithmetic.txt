@@ -1,0 +1,174 @@
+===
+arithmetic.txt
+===
+
+import log : fn (i32) -> unit from log
+import log_f32 : fn (f32) -> unit from log
+
+fn main() {
+  log(1 + 1);
+  log(2 - 1);
+  log(1 - 2);
+  log(2 - 2);
+  log(2 * 3);
+  log(3 * 2);
+  log(2 / 3);
+  log(3 / 2);
+
+  log_f32(1.1 + 1.1);
+  log_f32(2.1 - 1.1);
+  log_f32(1.1 - 2.1);
+  log_f32(2.1 - 2.1);
+  log_f32(2.1 * 3.1);
+  log_f32(3.1 * 2.1);
+  log_f32(2.1 / 3.1);
+  log_f32(3.1 / 2.1);
+}
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_f32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (int_lit)
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (binary_e
+              (float_lit)
+              (float_lit))))))))

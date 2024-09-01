@@ -1,0 +1,79 @@
+===
+arrays.txt
+===
+
+import log : fn (i32) -> unit from log
+
+fn main() {
+  let empty: [i32] = [];
+  let single = [1];
+  let double = [1, 2];
+  let double_trailing = [1, 2,];
+
+  let nested : [[i32]] = [[], [42]];
+  log(nested[1][0]);
+  log([1][0]);
+}
+
+
+---
+
+(source_file
+  (top_import
+    (lower_ident)
+    (ty_func
+      (ty_i32)
+      (ty_unit))
+    (lower_ident))
+  (top_func
+    (lower_ident)
+    (func_params)
+    (block_e
+      (let_decl
+        (lower_ident)
+        (ty_array
+          (ty_i32))
+        (array_e))
+      (let_decl
+        (lower_ident)
+        (array_e
+          (int_lit)))
+      (let_decl
+        (lower_ident)
+        (array_e
+          (int_lit)
+          (int_lit)))
+      (let_decl
+        (lower_ident)
+        (array_e
+          (int_lit)
+          (int_lit)))
+      (let_decl
+        (lower_ident)
+        (ty_array
+          (ty_array
+            (ty_i32)))
+        (array_e
+          (array_e)
+          (array_e
+            (int_lit))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (array_idx_e
+              (array_idx_e
+                (var_e
+                  (lower_ident))
+                (int_lit))
+              (int_lit)))))
+      (expr_decl
+        (call_e
+          (var_e
+            (lower_ident))
+          (call_args
+            (array_idx_e
+              (array_e
+                (int_lit))
+              (int_lit))))))))
