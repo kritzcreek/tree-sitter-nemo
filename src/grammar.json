@@ -93,19 +93,18 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "type",
+          "name": "variant",
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "qualifier"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "upper_ident"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "qualifier"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "alternative",
+          "content": {
+            "type": "SYMBOL",
+            "name": "upper_ident"
           }
         },
         {

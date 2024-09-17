@@ -11,7 +11,7 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 65
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 30
+#define FIELD_COUNT 32
 #define MAX_ALIAS_SEQUENCE_LENGTH 7
 #define PRODUCTION_ID_COUNT 47
 
@@ -986,40 +986,43 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 };
 
 enum ts_field_identifiers {
-  field_annotation = 1,
-  field_argument = 2,
-  field_arguments = 3,
-  field_array = 4,
-  field_binder = 5,
-  field_block_decl = 6,
-  field_body = 7,
-  field_condition = 8,
-  field_elem_ty = 9,
-  field_else = 10,
-  field_expr = 11,
-  field_external = 12,
-  field_function = 13,
-  field_index = 14,
-  field_internal = 15,
-  field_left = 16,
-  field_module = 17,
-  field_name = 18,
-  field_op = 19,
-  field_params = 20,
-  field_pattern = 21,
-  field_result = 22,
-  field_right = 23,
-  field_scrutinee = 24,
-  field_struct = 25,
-  field_target = 26,
-  field_then = 27,
-  field_type = 28,
-  field_type_arguments = 29,
-  field_type_params = 30,
+  field_alternative = 1,
+  field_annotation = 2,
+  field_argument = 3,
+  field_arguments = 4,
+  field_array = 5,
+  field_binder = 6,
+  field_block_decl = 7,
+  field_body = 8,
+  field_condition = 9,
+  field_elem_ty = 10,
+  field_else = 11,
+  field_expr = 12,
+  field_external = 13,
+  field_function = 14,
+  field_index = 15,
+  field_internal = 16,
+  field_left = 17,
+  field_module = 18,
+  field_name = 19,
+  field_op = 20,
+  field_params = 21,
+  field_pattern = 22,
+  field_result = 23,
+  field_right = 24,
+  field_scrutinee = 25,
+  field_struct = 26,
+  field_target = 27,
+  field_then = 28,
+  field_type = 29,
+  field_type_arguments = 30,
+  field_type_params = 31,
+  field_variant = 32,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
+  [field_alternative] = "alternative",
   [field_annotation] = "annotation",
   [field_argument] = "argument",
   [field_arguments] = "arguments",
@@ -1050,6 +1053,7 @@ static const char * const ts_field_names[] = {
   [field_type] = "type",
   [field_type_arguments] = "type_arguments",
   [field_type_params] = "type_params",
+  [field_variant] = "variant",
 };
 
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
@@ -1227,9 +1231,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
   [82] =
     {field_result, 4},
   [83] =
+    {field_alternative, 1},
     {field_binder, 2},
-    {field_type, 0},
-    {field_type, 1},
+    {field_variant, 0},
   [86] =
     {field_body, 2},
     {field_pattern, 0},

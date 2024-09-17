@@ -65,7 +65,8 @@ module.exports = grammar({
     var_pat: ($) => $.lower_ident,
     variant_pat: ($) =>
       seq(
-        field("type", seq($.qualifier, $.upper_ident)),
+        field("variant", $.qualifier),
+        field("alternative", $.upper_ident),
         field("binder", $.lower_ident),
       ),
 

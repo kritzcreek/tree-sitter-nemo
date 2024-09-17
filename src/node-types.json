@@ -2766,6 +2766,16 @@
     "type": "variant_pat",
     "named": true,
     "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      },
       "binder": {
         "multiple": false,
         "required": true,
@@ -2776,16 +2786,12 @@
           }
         ]
       },
-      "type": {
-        "multiple": true,
+      "variant": {
+        "multiple": false,
         "required": true,
         "types": [
           {
             "type": "qualifier",
-            "named": true
-          },
-          {
-            "type": "upper_ident",
             "named": true
           }
         ]
