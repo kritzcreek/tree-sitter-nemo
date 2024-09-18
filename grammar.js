@@ -58,6 +58,7 @@ module.exports = grammar({
     intrinsic_ident: ($) => /@[a-z_][a-zA-Z0-9_]*/,
 
     qualifier: ($) => seq($.upper_ident, "::"),
+    mod_qualifier: ($) => seq($.lower_ident, "::"),
 
     // Patterns
     _pattern: ($) => choice($.var_pat, $.variant_pat),
@@ -65,6 +66,7 @@ module.exports = grammar({
     var_pat: ($) => $.lower_ident,
     variant_pat: ($) =>
       seq(
+        optional(field("mod_qualifier", $.mod_qualifier)),
         field("variant", $.qualifier),
         field("alternative", $.upper_ident),
         field("binder", $.lower_ident),
@@ -83,7 +85,10 @@ module.exports = grammar({
     _lit: ($) => choice($.int_lit, $.float_lit, $.bool_lit, $.bytes_lit),
 
     // Expressions
-    var_e: ($) => $.lower_ident,
+    var_e: ($) => seq(
+      field("mod_qualifier", optional($.mod_qualifier)),
+      $.lower_ident,
+    ),
     array_e: ($) => seq("[", comma_sep_trailing($._expr), "]"),
     array_idx_e: ($) =>
       prec(
@@ -93,9 +98,10 @@ module.exports = grammar({
 
     struct_field_e: ($) =>
       seq(field("name", $.lower_ident), "=", field("expr", $._expr)),
-    struct_e: ($) =>
-      seq(
-        field("struct", seq(optional($.qualifier), $.upper_ident)),
+    struct_e: ($) => seq(
+        optional($.mod_qualifier),
+        optional($.qualifier),
+        field("struct", $.upper_ident),
         optional(field("type_arguments", $.type_args_hash)),
         "{",
         comma_sep_trailing($.struct_field_e),
@@ -230,6 +236,7 @@ module.exports = grammar({
     ty_var: ($) => $.lower_ident,
     ty_array: ($) => seq("[", field("elem_ty", $._type), "]"),
     ty_cons: ($) => seq(
+      optional(field("mod_qualifier", $.mod_qualifier)),
       $.upper_ident,
       optional(field("type_params", $.type_args)),
     ),

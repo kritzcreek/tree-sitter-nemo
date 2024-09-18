@@ -1,6 +1,12 @@
-["import" "fn" "from" "let" "set" "struct" "while" "if" "else" "return" "variant" "match"] @keyword
+["import" "fn" "from" "let" "set" "struct" "while" "if" "else" "return" "variant" "match" "module" "exports" "use"] @keyword
 
 (binary_e ["&&" "||" "==" "!=" "<" "<=" ">" ">=" "+" "-" "*" "/"] @identifier.operator)
+
+(module_header name: (lower_ident) @identifier.module)
+(export_item (lower_ident) @identifier.function)
+(export_item (upper_ident) @identifier.type)
+(module_use module: (lower_ident) @identifier.module)
+(mod_qualifier (lower_ident) @identifier.module)
 
 (top_func name: (lower_ident) @identifier.function)
 
@@ -8,9 +14,9 @@
 (bool_lit) @boolean
 (bytes_lit) @string
 
-(top_import 
-	internal: (lower_ident) @identifier.function
-	external: (lower_ident) @identifier.function)
+(top_import
+  internal: (lower_ident) @identifier.function
+  external: (lower_ident) @identifier.function)
 
 [(ty_i32) (ty_f32) (ty_bytes) (ty_bool) (ty_unit)] @type.builtin
 
@@ -25,8 +31,8 @@
 (ty_var) @identifier.type
 (ty_cons (upper_ident) @identifier.type)
 (variant_pat
-    alternative: (upper_ident) @identifier.type
-    binder: (lower_ident) @identifier)
+  alternative: (upper_ident) @identifier.type
+  binder: (lower_ident) @identifier)
 
 (qualifier (upper_ident) @identifier.type)
 
