@@ -1,4 +1,4 @@
-["import" "fn" "from" "let" "set" "struct" "while" "if" "else" "return" "variant" "match" "module" "exports" "use"] @keyword
+["import" "fn" "from" "let" "set" "struct" "while" "if" "else" "return" "variant" "match" "module" "exports" "use" "global"] @keyword
 
 (binary_e ["&&" "||" "==" "!=" "<" "<=" ">" ">=" "+" "-" "*" "/"] @identifier.operator)
 
@@ -23,6 +23,7 @@
 (var_e) @identifier
 (let_decl binder: (lower_ident) @identifier)
 (set_var) @identifier
+(top_global binder: (lower_ident) @identifier)
 
 (top_struct name: (upper_ident) @identifier.type)
 (top_variant name: (upper_ident) @identifier.type)
