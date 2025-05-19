@@ -2,15 +2,15 @@
 arrays.txt
 ===
 
-import log : fn (i32) -> unit from log
+import log : fn (I32) -> Unit from log
 
 fn main() {
-  let empty: [i32] = [];
+  let empty: Array[I32] = [];
   let single = [1];
   let double = [1, 2];
   let double_trailing = [1, 2,];
 
-  let nested : [[i32]] = [[], [42]];
+  let nested : Array[Array[I32]] = [[], [42]];
   log(nested[1][0]);
   log([1][0]);
 }
@@ -31,8 +31,10 @@ fn main() {
     (block_e
       (let_decl
         (lower_ident)
-        (ty_array
-          (ty_i32))
+        (ty_cons
+          (upper_ident)
+          (type_args
+            (ty_i32)))
         (array_e))
       (let_decl
         (lower_ident)
@@ -50,9 +52,13 @@ fn main() {
           (int_lit)))
       (let_decl
         (lower_ident)
-        (ty_array
-          (ty_array
-            (ty_i32)))
+        (ty_cons
+          (upper_ident)
+          (type_args
+            (ty_cons
+              (upper_ident)
+              (type_args
+                (ty_i32)))))
         (array_e
           (array_e)
           (array_e

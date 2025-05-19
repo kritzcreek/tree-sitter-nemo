@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "nemo",
   "word": "lower_ident",
   "rules": {
@@ -1059,7 +1060,7 @@
       "members": [
         {
           "type": "STRING",
-          "value": "fn"
+          "value": "\\"
         },
         {
           "type": "FIELD",
@@ -1517,48 +1518,27 @@
     },
     "ty_i32": {
       "type": "STRING",
-      "value": "i32"
+      "value": "I32"
     },
     "ty_f32": {
       "type": "STRING",
-      "value": "f32"
+      "value": "F32"
     },
     "ty_bytes": {
       "type": "STRING",
-      "value": "bytes"
+      "value": "Bytes"
     },
     "ty_bool": {
       "type": "STRING",
-      "value": "bool"
+      "value": "Bool"
     },
     "ty_unit": {
       "type": "STRING",
-      "value": "unit"
+      "value": "Unit"
     },
     "ty_var": {
       "type": "SYMBOL",
       "name": "lower_ident"
-    },
-    "ty_array": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "["
-        },
-        {
-          "type": "FIELD",
-          "name": "elem_ty",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_type"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "]"
-        }
-      ]
     },
     "ty_cons": {
       "type": "SEQ",
@@ -1572,6 +1552,22 @@
               "content": {
                 "type": "SYMBOL",
                 "name": "mod_qualifier"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "qualifier",
+              "content": {
+                "type": "SYMBOL",
+                "name": "qualifier"
               }
             },
             {
@@ -1697,10 +1693,6 @@
         {
           "type": "SYMBOL",
           "name": "ty_var"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "ty_array"
         },
         {
           "type": "SYMBOL",
@@ -2303,5 +2295,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

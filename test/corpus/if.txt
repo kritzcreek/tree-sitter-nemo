@@ -1,7 +1,7 @@
 ===
 if.txt
 ===
-import log : fn (i32) -> unit from log
+import log : fn (I32) -> Unit from log
 
 fn main() {
   if true { log(1) } else { log(2) };

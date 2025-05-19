@@ -152,7 +152,7 @@ module.exports = grammar({
     binary_e: ($) => make_binary_rules($._expr),
 
     function_e: ($) => seq(
-        "fn",
+        "\\",
         field("params", $.func_params),
         optional(seq("->", field("result", $._type))),
         field("body", $.block_e),
@@ -228,15 +228,15 @@ module.exports = grammar({
     // Types
     type_args: ($) => seq("[", comma_sep_trailing($._type), "]"),
 
-    ty_i32: ($) => "i32",
-    ty_f32: ($) => "f32",
-    ty_bytes: ($) => "bytes",
-    ty_bool: ($) => "bool",
-    ty_unit: ($) => "unit",
+    ty_i32: ($) => "I32",
+    ty_f32: ($) => "F32",
+    ty_bytes: ($) => "Bytes",
+    ty_bool: ($) => "Bool",
+    ty_unit: ($) => "Unit",
     ty_var: ($) => $.lower_ident,
-    ty_array: ($) => seq("[", field("elem_ty", $._type), "]"),
     ty_cons: ($) => seq(
       optional(field("mod_qualifier", $.mod_qualifier)),
+      optional(field("qualifier", $.qualifier)),
       $.upper_ident,
       optional(field("type_params", $.type_args)),
     ),
@@ -257,7 +257,6 @@ module.exports = grammar({
         $.ty_bool,
         $.ty_unit,
         $.ty_var,
-        $.ty_array,
         $.ty_cons,
         $.ty_func,
       ),

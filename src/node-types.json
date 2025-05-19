@@ -792,10 +792,6 @@
         "required": true,
         "types": [
           {
-            "type": "ty_array",
-            "named": true
-          },
-          {
             "type": "ty_bool",
             "named": true
           },
@@ -874,10 +870,6 @@
         "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "ty_array",
-            "named": true
-          },
           {
             "type": "ty_bool",
             "named": true
@@ -1057,10 +1049,6 @@
         "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "ty_array",
-            "named": true
-          },
           {
             "type": "ty_bool",
             "named": true
@@ -1805,6 +1793,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -1998,10 +1987,6 @@
         "required": true,
         "types": [
           {
-            "type": "ty_array",
-            "named": true
-          },
-          {
             "type": "ty_bool",
             "named": true
           },
@@ -2170,10 +2155,6 @@
         "required": false,
         "types": [
           {
-            "type": "ty_array",
-            "named": true
-          },
-          {
             "type": "ty_bool",
             "named": true
           },
@@ -2227,10 +2208,6 @@
         "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "ty_array",
-            "named": true
-          },
           {
             "type": "ty_bool",
             "named": true
@@ -2464,54 +2441,6 @@
     }
   },
   {
-    "type": "ty_array",
-    "named": true,
-    "fields": {
-      "elem_ty": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "ty_array",
-            "named": true
-          },
-          {
-            "type": "ty_bool",
-            "named": true
-          },
-          {
-            "type": "ty_bytes",
-            "named": true
-          },
-          {
-            "type": "ty_cons",
-            "named": true
-          },
-          {
-            "type": "ty_f32",
-            "named": true
-          },
-          {
-            "type": "ty_func",
-            "named": true
-          },
-          {
-            "type": "ty_i32",
-            "named": true
-          },
-          {
-            "type": "ty_unit",
-            "named": true
-          },
-          {
-            "type": "ty_var",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "ty_cons",
     "named": true,
     "fields": {
@@ -2521,6 +2450,16 @@
         "types": [
           {
             "type": "mod_qualifier",
+            "named": true
+          }
+        ]
+      },
+      "qualifier": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "qualifier",
             "named": true
           }
         ]
@@ -2555,10 +2494,6 @@
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": "ty_array",
-            "named": true
-          },
           {
             "type": "ty_bool",
             "named": true
@@ -2597,10 +2532,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "ty_array",
-            "named": true
-          },
           {
             "type": "ty_bool",
             "named": true
@@ -2661,10 +2592,6 @@
       "required": false,
       "types": [
         {
-          "type": "ty_array",
-          "named": true
-        },
-        {
           "type": "ty_bool",
           "named": true
         },
@@ -2707,10 +2634,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "ty_array",
-          "named": true
-        },
         {
           "type": "ty_bool",
           "named": true
@@ -3052,6 +2975,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\",
     "named": false
   },
   {
