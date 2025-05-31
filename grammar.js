@@ -75,9 +75,10 @@ module.exports = grammar({
     // Literals
     int_lit: ($) => choice(
       "0",
-      /[1-9][0-9]*/,
-      seq("0b", /[01]*/),
-      seq("0x", /[0-9a-fA-F]*/),
+      "0u",
+      /[1-9][0-9]*u?/,
+      seq("0b", /[01]*u?/),
+      seq("0x", /[0-9a-fA-F]*u?/),
     ),
     float_lit: ($) => token(seq(choice("0", /[0-9]*/), ".", /[0-9]+/)),
     bool_lit: ($) => choice("true", "false"),
@@ -229,6 +230,7 @@ module.exports = grammar({
     type_args: ($) => seq("[", comma_sep_trailing($._type), "]"),
 
     ty_i32: ($) => "I32",
+    ty_u32: ($) => "U32",
     ty_f32: ($) => "F32",
     ty_bytes: ($) => "Bytes",
     ty_bool: ($) => "Bool",
@@ -252,6 +254,7 @@ module.exports = grammar({
     _type: ($) =>
       choice(
         $.ty_i32,
+        $.ty_u32,
         $.ty_f32,
         $.ty_bytes,
         $.ty_bool,

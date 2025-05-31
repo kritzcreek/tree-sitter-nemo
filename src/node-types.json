@@ -816,6 +816,10 @@
             "named": true
           },
           {
+            "type": "ty_u32",
+            "named": true
+          },
+          {
             "type": "ty_unit",
             "named": true
           },
@@ -892,6 +896,10 @@
           },
           {
             "type": "ty_i32",
+            "named": true
+          },
+          {
+            "type": "ty_u32",
             "named": true
           },
           {
@@ -1071,6 +1079,10 @@
           },
           {
             "type": "ty_i32",
+            "named": true
+          },
+          {
+            "type": "ty_u32",
             "named": true
           },
           {
@@ -2011,6 +2023,10 @@
             "named": true
           },
           {
+            "type": "ty_u32",
+            "named": true
+          },
+          {
             "type": "ty_unit",
             "named": true
           },
@@ -2179,6 +2195,10 @@
             "named": true
           },
           {
+            "type": "ty_u32",
+            "named": true
+          },
+          {
             "type": "ty_unit",
             "named": true
           },
@@ -2230,6 +2250,10 @@
           },
           {
             "type": "ty_i32",
+            "named": true
+          },
+          {
+            "type": "ty_u32",
             "named": true
           },
           {
@@ -2519,6 +2543,10 @@
             "named": true
           },
           {
+            "type": "ty_u32",
+            "named": true
+          },
+          {
             "type": "ty_unit",
             "named": true
           },
@@ -2554,6 +2582,10 @@
           },
           {
             "type": "ty_i32",
+            "named": true
+          },
+          {
+            "type": "ty_u32",
             "named": true
           },
           {
@@ -2616,6 +2648,10 @@
           "named": true
         },
         {
+          "type": "ty_u32",
+          "named": true
+        },
+        {
           "type": "ty_unit",
           "named": true
         },
@@ -2656,6 +2692,10 @@
         },
         {
           "type": "ty_i32",
+          "named": true
+        },
+        {
+          "type": "ty_u32",
           "named": true
         },
         {
@@ -2930,6 +2970,10 @@
     "named": false
   },
   {
+    "type": "0u",
+    "named": false
+  },
+  {
     "type": "0x",
     "named": false
   },
@@ -3071,6 +3115,10 @@
   },
   {
     "type": "ty_i32",
+    "named": true
+  },
+  {
+    "type": "ty_u32",
     "named": true
   },
   {

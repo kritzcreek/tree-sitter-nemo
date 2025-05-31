@@ -155,8 +155,12 @@
           "value": "0"
         },
         {
+          "type": "STRING",
+          "value": "0u"
+        },
+        {
           "type": "PATTERN",
-          "value": "[1-9][0-9]*"
+          "value": "[1-9][0-9]*u?"
         },
         {
           "type": "SEQ",
@@ -167,7 +171,7 @@
             },
             {
               "type": "PATTERN",
-              "value": "[01]*"
+              "value": "[01]*u?"
             }
           ]
         },
@@ -180,7 +184,7 @@
             },
             {
               "type": "PATTERN",
-              "value": "[0-9a-fA-F]*"
+              "value": "[0-9a-fA-F]*u?"
             }
           ]
         }
@@ -1520,6 +1524,10 @@
       "type": "STRING",
       "value": "I32"
     },
+    "ty_u32": {
+      "type": "STRING",
+      "value": "U32"
+    },
     "ty_f32": {
       "type": "STRING",
       "value": "F32"
@@ -1673,6 +1681,10 @@
         {
           "type": "SYMBOL",
           "name": "ty_i32"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ty_u32"
         },
         {
           "type": "SYMBOL",
