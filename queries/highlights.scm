@@ -1,4 +1,4 @@
-["import" "fn" "from" "let" "set" "struct" "while" "if" "else" "return" "variant" "match" "module" "exports" "use" "global"] @keyword
+["import" "fn" "from" "let" "set" "struct" "while" "when" "if" "else" "return" "variant" "match" "module" "exports" "use" "global"] @keyword
 
 (binary_e ["&&" "||" "==" "!=" "<" "<=" ">" ">=" "+" "-" "*" "/"] @identifier.operator)
 

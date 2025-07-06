@@ -522,6 +522,31 @@
         ]
       }
     },
+    "when_e": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "when"
+        },
+        {
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expr"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "then",
+          "content": {
+            "type": "SYMBOL",
+            "name": "block_e"
+          }
+        }
+      ]
+    },
     "if_e": {
       "type": "SEQ",
       "members": [
@@ -1168,6 +1193,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "when_e"
+        },
+        {
+          "type": "SYMBOL",
           "name": "if_e"
         },
         {
@@ -1219,6 +1248,10 @@
         {
           "type": "SYMBOL",
           "name": "struct_e"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "when_e"
         },
         {
           "type": "SYMBOL",

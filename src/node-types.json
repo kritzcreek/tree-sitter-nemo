@@ -78,6 +78,10 @@
         {
           "type": "var_e",
           "named": true
+        },
+        {
+          "type": "when_e",
+          "named": true
         }
       ]
     }
@@ -161,6 +165,10 @@
           {
             "type": "var_e",
             "named": true
+          },
+          {
+            "type": "when_e",
+            "named": true
           }
         ]
       },
@@ -238,6 +246,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -322,6 +334,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -455,6 +471,10 @@
           {
             "type": "var_e",
             "named": true
+          },
+          {
+            "type": "when_e",
+            "named": true
           }
         ]
       }
@@ -577,6 +597,10 @@
         {
           "type": "var_e",
           "named": true
+        },
+        {
+          "type": "when_e",
+          "named": true
         }
       ]
     }
@@ -649,6 +673,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -767,6 +795,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -993,6 +1025,10 @@
           {
             "type": "var_e",
             "named": true
+          },
+          {
+            "type": "when_e",
+            "named": true
           }
         ]
       },
@@ -1180,6 +1216,10 @@
           {
             "type": "var_e",
             "named": true
+          },
+          {
+            "type": "when_e",
+            "named": true
           }
         ]
       }
@@ -1293,6 +1333,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -1445,6 +1489,10 @@
           {
             "type": "var_e",
             "named": true
+          },
+          {
+            "type": "when_e",
+            "named": true
           }
         ]
       }
@@ -1544,6 +1592,10 @@
         {
           "type": "var_e",
           "named": true
+        },
+        {
+          "type": "when_e",
+          "named": true
         }
       ]
     }
@@ -1626,6 +1678,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -1728,6 +1784,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -1965,6 +2025,10 @@
           {
             "type": "var_e",
             "named": true
+          },
+          {
+            "type": "when_e",
+            "named": true
           }
         ]
       },
@@ -2116,6 +2180,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -2350,6 +2418,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -2812,6 +2884,104 @@
     }
   },
   {
+    "type": "when_e",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array_e",
+            "named": true
+          },
+          {
+            "type": "array_idx_e",
+            "named": true
+          },
+          {
+            "type": "binary_e",
+            "named": true
+          },
+          {
+            "type": "block_e",
+            "named": true
+          },
+          {
+            "type": "bool_lit",
+            "named": true
+          },
+          {
+            "type": "bytes_lit",
+            "named": true
+          },
+          {
+            "type": "call_e",
+            "named": true
+          },
+          {
+            "type": "float_lit",
+            "named": true
+          },
+          {
+            "type": "function_e",
+            "named": true
+          },
+          {
+            "type": "if_e",
+            "named": true
+          },
+          {
+            "type": "int_lit",
+            "named": true
+          },
+          {
+            "type": "intrinsic_e",
+            "named": true
+          },
+          {
+            "type": "match_e",
+            "named": true
+          },
+          {
+            "type": "parenthesized_e",
+            "named": true
+          },
+          {
+            "type": "return_e",
+            "named": true
+          },
+          {
+            "type": "struct_e",
+            "named": true
+          },
+          {
+            "type": "struct_idx_e",
+            "named": true
+          },
+          {
+            "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
+            "named": true
+          }
+        ]
+      },
+      "then": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block_e",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "while_decl",
     "named": true,
     "fields": {
@@ -2899,6 +3069,10 @@
           },
           {
             "type": "var_e",
+            "named": true
+          },
+          {
+            "type": "when_e",
             "named": true
           }
         ]
@@ -3135,6 +3309,10 @@
   },
   {
     "type": "variant",
+    "named": false
+  },
+  {
+    "type": "when",
     "named": false
   },
   {

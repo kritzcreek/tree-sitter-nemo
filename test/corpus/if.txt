@@ -6,6 +6,8 @@ import log : fn (I32) -> Unit from log
 fn main() {
   if true { log(1) } else { log(2) };
   if false { log(1) } else { log(2) };
+  when true { log(1) };
+  when false { log(1) };
 }
 
 
@@ -49,6 +51,26 @@ fn main() {
                   (lower_ident))
                 (call_args
                   (int_lit)))))
+          (block_e
+            (expr_decl
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (int_lit)))))))
+      (expr_decl
+        (when_e
+          (bool_lit)
+          (block_e
+            (expr_decl
+              (call_e
+                (var_e
+                  (lower_ident))
+                (call_args
+                  (int_lit)))))))
+      (expr_decl
+        (when_e
+          (bool_lit)
           (block_e
             (expr_decl
               (call_e

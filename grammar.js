@@ -114,6 +114,11 @@ module.exports = grammar({
         100,
         seq(field("expr", $._expr), ".", field("index", $.lower_ident)),
       ),
+    when_e: ($) => seq(
+      "when",
+      field("condition", $._expr),
+      field("then", $.block_e),
+    ),
     if_e: ($) =>
       seq(
         "if",
@@ -173,6 +178,7 @@ module.exports = grammar({
         $.parenthesized_e,
         $.array_e,
         $.struct_e,
+        $.when_e,
         $.if_e,
         $.intrinsic_e,
         $.array_idx_e,
@@ -190,6 +196,7 @@ module.exports = grammar({
         $.parenthesized_e,
         $.array_e,
         $.struct_e,
+        $.when_e,
         $.if_e,
         $.block_e,
         $.binary_e,
